@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# La maison Jungle
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a pedagogic project based on the [Open Classroom course](https://openclassrooms.com/fr/courses/7008001-debutez-avec-react). This project is the first project  of my learning react journey. I customized the project by adding typescript and trying to use some Test driven Development with jest. You can find the visual of the project [here](https://la-maison-jungle-nine.vercel.app/).
 
 ## Available Scripts
 
