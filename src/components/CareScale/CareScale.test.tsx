@@ -1,4 +1,4 @@
-import { getByText, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import CareScale from './CareScale';
 
 

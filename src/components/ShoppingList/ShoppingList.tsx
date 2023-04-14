@@ -1,6 +1,6 @@
 import { plantList} from "../../data/plantList"
 import { IplantList } from "../../interface/IPlantList";
-import CareScale from "../CareScale/CareScale";
+import PlantItem from "../PlantItem/PlantItem";
 import './ShoppingList.css';
 function ShoppingList(){
     const categories = plantList.reduce((acc:any, plant: IplantList) =>
@@ -15,12 +15,7 @@ function ShoppingList(){
             </ul>
             <ul role="dialog" className="lmj-plant-list">
                 {plantList.map((plant) =>(
-                    <li key={plant.id} className="lmj-plant-item">
-                        {plant.name} 
-                        {plant.isBestSale && <span>🔥</span>}
-                        <CareScale careType='water' scaleValue={plant.water}/>
-                        <CareScale careType='light' scaleValue={plant.light}/>
-                    </li>
+                    <PlantItem name={plant.name} cover={plant.cover} id={plant.id} light={plant.light} water={plant.water}/>
                 ))}
             </ul>
         </div>
