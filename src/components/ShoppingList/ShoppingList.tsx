@@ -4,7 +4,6 @@ function ShoppingList(){
     const categories = plantList.reduce((acc:any, plant: IplantList) =>
         acc.includes(plant.category) ? acc : [...acc, plant.category], []
     )
-    console.log(categories)
     return(
         <div>
             <ul>
