@@ -1,8 +1,9 @@
 import { plantList} from "../../data/plantList"
 import { IplantList } from "../../interface/IPlantList";
 import PlantItem from "../PlantItem/PlantItem";
+import { ICartState } from "../../interface/ICartState";
 import './ShoppingList.css';
-function ShoppingList(){
+function ShoppingList(props:ICartState){
     const categories = plantList.reduce((acc:any, plant: IplantList) =>
         acc.includes(plant.category) ? acc : [...acc, plant.category], []
     )
@@ -15,7 +16,10 @@ function ShoppingList(){
             </ul>
             <ul role="dialog" className="lmj-plant-list">
                 {plantList.map((plant) =>(
-                    <PlantItem name={plant.name} cover={plant.cover} id={plant.id} light={plant.light} water={plant.water} key={plant.id}/>
+                    <div key={plant.id}>
+                        <PlantItem name={plant.name} cover={plant.cover} id={plant.id} light={plant.light} water={plant.water}/>
+                        <button onClick={() => props.updateCart(props.cart + 1)}>Ajouter</button>
+                    </div>
                 ))}
             </ul>
         </div>

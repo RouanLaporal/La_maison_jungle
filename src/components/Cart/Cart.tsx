@@ -1,11 +1,11 @@
+import { ICartState } from '../../interface/ICartState';
 import './Cart.css';
 import { useState } from 'react';
 
-function Cart(){
+function Cart(props:ICartState){
     const monsteraPrice = 8
     const ivyPrice = 10
     const flowerPrice = 15  
-    const [cart, updateCart] = useState(0)
     const [isOpen, setIsOpen] = useState(false)
 
     return isOpen ? (
@@ -14,15 +14,14 @@ function Cart(){
         <h2>Panier</h2>
         <div>
             Monstera : {monsteraPrice}€
-            <button onClick={() => updateCart(cart+1)}> Ajouter</button>
         </div>
         {/* <ul role="dialog">
             <li>Monstera : {monsteraPrice}€</li>
             <li>Lierre : {ivyPrice}€</li>
             <li>Fleurs : {flowerPrice}€</li>
         </ul> */}
-        <h3>Total : {monsteraPrice * cart}€</h3>
-        <button onClick={() => updateCart(0)}>Vider le panier</button>
+        <h3>Total : {monsteraPrice * props.cart}€</h3>
+        <button onClick={() => props.updateCart(0)}>Vider le panier</button>
         </div>
     ): (
     <div className='lmj-cart-closed'>
