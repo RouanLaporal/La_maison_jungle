@@ -4,5 +4,7 @@ export interface IplantList{
     id:string,
     isBestSale?:boolean,
     light:number,
-    water:number
+    water:number,
+    cover:string,
+    price:number,
 }
