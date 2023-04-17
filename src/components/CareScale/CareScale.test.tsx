@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import CareScale from './CareScale';
+import userEvent from '@testing-library/user-event';
 
 
 describe("CareScale component test", () =>{

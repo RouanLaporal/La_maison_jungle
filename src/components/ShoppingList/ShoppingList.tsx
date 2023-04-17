@@ -15,7 +15,7 @@ function ShoppingList(){
             </ul>
             <ul role="dialog" className="lmj-plant-list">
                 {plantList.map((plant) =>(
-                    <PlantItem name={plant.name} cover={plant.cover} id={plant.id} light={plant.light} water={plant.water}/>
+                    <PlantItem name={plant.name} cover={plant.cover} id={plant.id} light={plant.light} water={plant.water} key={plant.id}/>
                 ))}
             </ul>
         </div>
