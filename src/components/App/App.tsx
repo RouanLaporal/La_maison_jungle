@@ -6,7 +6,7 @@ import ShoppingList from '../ShoppingList/ShoppingList';
 import Footer from '../Footer/Footer';
 
 function App() {
-  const [cart, updateCart] = useState(0)
+  const [cart, updateCart] = useState([])
   
   return (
     <div className="App">
