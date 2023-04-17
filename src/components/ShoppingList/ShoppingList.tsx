@@ -1,12 +1,13 @@
 import { plantList} from "../../data/plantList"
-import { IplantList } from "../../interface/IPlantList";
 import PlantItem from "../PlantItem/PlantItem";
-import { ICartState } from "../../interface/ICartState";
 import './ShoppingList.css';
+import { useState } from "react";
+import Categories from "../Categories/Categories";
+import { ICartState } from "../../interface/ICartState";
 function ShoppingList(props:ICartState){
-    const categories = plantList.reduce((acc:any, plant: IplantList) =>
-        acc.includes(plant.category) ? acc : [...acc, plant.category], []
-    )
+
+    const [category, updateCategory] = useState("")
+    
     function addToCart(name:string, price:number){
         const currentPlantSaved = props.cart.find((plant) => plant.name === name)
         if(currentPlantSaved) {
@@ -20,16 +21,26 @@ function ShoppingList(props:ICartState){
             props.updateCart([...props.cart, { name, price, amount: 1 }])
         }
     }   
+    
     return(
         <div className="lmj-shopping-list">
-            <ul>
-                {categories.map((category:string) =>(
-                    <li key={category}>{category}</li>
-                ))}
-            </ul>
+            <Categories category={category} updateCategory={updateCategory}/>
             <ul role="dialog" className="lmj-plant-list">
-                {plantList.map((plant) =>(
-                    <div key={plant.id}>
+                {category === "" ? 
+                    plantList.map((plant) =>(
+                        <div key={plant.id}>
+                            <PlantItem 
+                                name={plant.name} 
+                                cover={plant.cover} 
+                                light={plant.light} 
+                                water={plant.water} 
+                                price={plant.price}
+                            />
+                            <button onClick={() => addToCart(plant.name, plant.price)}>Ajouter</button>
+                        </div>))
+                    : plantList.map((plant)=>(
+                        plant.category === category ? 
+                        <div key={plant.id}>
                         <PlantItem 
                             name={plant.name} 
                             cover={plant.cover} 
@@ -39,7 +50,9 @@ function ShoppingList(props:ICartState){
                         />
                         <button onClick={() => addToCart(plant.name, plant.price)}>Ajouter</button>
                     </div>
-                ))}
+                    : ""
+                    ))
+                    }
             </ul>
         </div>
     )
