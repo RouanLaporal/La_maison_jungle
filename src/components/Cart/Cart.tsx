@@ -1,6 +1,6 @@
 import { ICartState } from '../../interface/ICartState';
 import './Cart.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function Cart(props:ICartState){ 
     const [isOpen, setIsOpen] = useState(false)
@@ -8,6 +8,10 @@ function Cart(props:ICartState){
         (acc, plantType) => acc + plantType.amount * plantType.price, 0
     )
 
+    useEffect(() =>{
+        document.title = `LMJ: ${total}€ d'achats`
+    },[total])
+    
     return isOpen ? (
         <div className='lmj-cart'>
             <button className='lmj-cart-toogle-button' onClick={() => setIsOpen(false)}>Fermer</button>
